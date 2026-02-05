@@ -2,24 +2,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <h1>Logga in</h1>
 
+    <div class="login-border">
+    <h1 class="login-text">Logga in</h1>
     <form id="myForm">
-        <label for="username">Användarnamn</label><br>
+        <label for="username" class="login-box-text">Användarnamn</label><br>
         <input type="text" id="username" name="username"><br>
         
-        <label for="password">Lösenord</label><br>
+        <label for="password" class="login-box-text">Lösenord</label><br>
         <input type="password" id="password" name="password"><br>
         
-        <input type="submit" value="Logga in"><br>
+        <input type="submit" value="Logga in" class="login"><br>
+
+        <h2 class="vhd-text">VHDes.se</h2>
     </form>
-
-    <h3>Skapa ett konto för att hyra en el-scooter</h3>
-
+    </div>
+    
     <script>
         let username = null;
         const form = document.getElementById('myForm');
@@ -35,7 +41,7 @@
                 window.location.href = `sida.html?username=${encodeURIComponent(username)}`;
             }
             else{
-                alert("Fel användarnamn eller lösenord!");
+                alert("Fel användarnamn eller lösenord! (ange username = Loa och password = 123)");
             }
         });
     </script>

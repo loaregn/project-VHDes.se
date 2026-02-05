@@ -1,0 +1,67 @@
+body {
+    background-color: rgb(126, 80, 80);
+    text-align: center;
+    align-content: center;
+    display: flex;
+    margin: 200px;
+}
+
+.color-box {
+    color: rgb(216, 140, 140);
+}
+
+.login-border {
+    background-color: rgb(150, 132, 132);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-style: double;
+    border-color: rgb(90, 68, 68);
+    border-width: 10px;
+    border-radius: 10%;
+    text-align: center;
+    align-content: center;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-text {
+    font-size:8ch;
+    font-family: "Bungee", sans-serif;
+    font-style: normal;
+    color: rgb(240, 203, 203);
+}
+
+.login-box-text {
+    font-size: 3ch;
+    font-family: "Bungee", sans-serif;
+    font-style: normal;
+}
+
+.login {
+    font-size: 2ch;
+    font-family: "Bungee", sans-serif;
+    font-style: normal;
+    background-color: rgb(110, 91, 91);
+    color: rgb(240, 203, 203);
+}
+
+.vhd-text {
+    color:  rgb(240, 203, 203);
+    font-size: 3ch;
+    font-family: "Bungee", sans-serif;
+    font-style: normal;
+    text-decoration: underline
+    rgb(58, 30, 30);
+}
+
+#username {
+    background-color: rgb(110, 91, 91);
+    padding: 8px;
+    margin: 8px;
+}
+
+#password {
+    background-color: rgb(110, 91, 91);
+    padding: 8px;
+    margin: 8px;
+}
