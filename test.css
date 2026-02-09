@@ -1,0 +1,8 @@
+body {
+    transition: 0.5s;
+}
+
+#content {
+    transition: 0.5s;
+    filter: blur(15px);
+}

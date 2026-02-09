@@ -6,43 +6,46 @@
     <title>Login</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet"> <!--importerad font från Google Fonts-->
 </head>
 <body>
 
-    <div class="login-border">
-    <h1 class="login-text">Logga in</h1>
-    <form id="myForm">
-        <label for="username" class="login-box-text">Användarnamn</label><br>
-        <input type="text" id="username" name="username"><br>
-        
-        <label for="password" class="login-box-text">Lösenord</label><br>
-        <input type="password" id="password" name="password"><br>
-        
-        <input type="submit" value="Logga in" class="login"><br>
+    <div class="login-border"> <!-- En div som fungerar som en ram för login-boxen -->
+    <h1 class="login-text">Logga in</h1> <!-- Texten "Logga in" i login-boxen -->
 
-        <h2 class="vhd-text">VHDes.se</h2>
+    <form id="myForm">
+        <label for="username" class="login-box-text">Användarnamn</label><br> <!-- Label för användarnamn -->
+        <input type="text" id="username" name="username"><br> <!-- Inputfält för användarnamn -->
+        
+        <label for="password" class="login-box-text">Lösenord</label><br> <!-- Label för lösenord -->
+        <input type="password" id="password" name="password"><br> <!-- Inputfält för lösenord -->
+        
+        <input type="submit" value="Logga in" class="login"><br> <!-- Submit-knapp -->
+
+        <h2 class="vhd-text">VHDes.se</h2> <!-- Texten "VHDes.se" under login-knappen -->
     </form>
     </div>
     
     <script>
+        //koden nedan är från exemplet i classroom. Jag ändrade username till Loa och password till 123, så att det passar min sida bättre med mitt namn
+        //jag har också förståelse för hur koden fungerar
         let username = null;
         const form = document.getElementById('myForm');
 
-        form.addEventListener('submit', function (event){
+        form.addEventListener('submit', function (event){ //när användaren klickar på submit-knappen så körs den här funktionen
             event.preventDefault();
 
-            const text = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+            const text = document.getElementById('username').value; //konstaterar att text är lika med det som användaren skriver i inputfältet för username
+            const password = document.getElementById('password').value; //konstaterar att password är lika med det som användaren skriver i inputfältet för password
 
-            if(text == "Loa" && password == "123"){
+            if(text == "Loa" && password == "123"){ //här ändrade jag text, vilket är från typen text i inputfältet, där if text kopplas till username och password till password
                 username = text;
-                window.location.href = `sida.html?username=${encodeURIComponent(username)}`;
+                window.location.href = `sida.html?username=${encodeURIComponent(username)}`; //om username och password är rätt så skickas användaren vidare till sida.html
             }
             else{
-                alert("Fel användarnamn eller lösenord! (ange username = Loa och password = 123)");
-            }
+                alert("Fel användarnamn eller lösenord! (ange username = Loa och password = 123)"); //om username eller password är fel så kommer det upp en alert 
+            } //alerten ger även rätt username och password så att det är lättare att testa sidan
         });
     </script>
 </body>

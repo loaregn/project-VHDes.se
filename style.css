@@ -1,4 +1,4 @@
-body {
+body { /* här har jag ändrat bakgrundsfärgen och hur allt är centrerat*/
     background-color: rgb(126, 80, 80);
     text-align: center;
     align-content: center;
@@ -6,11 +6,7 @@ body {
     margin: 200px;
 }
 
-.color-box {
-    color: rgb(216, 140, 140);
-}
-
-.login-border {
+.login-border { /*En class som fungerar som en ram för login-boxen*/
     background-color: rgb(150, 132, 132);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     border-style: double;
@@ -24,20 +20,20 @@ body {
     margin-right: auto;
 }
 
-.login-text {
+.login-text { /*Här har jag ändrat fonten, storleken och färgen på texten i login-boxen*/
     font-size:8ch;
     font-family: "Bungee", sans-serif;
     font-style: normal;
     color: rgb(240, 203, 203);
 }
 
-.login-box-text {
+.login-box-text { /*Här har jag också ändrat fonten men för annan text*/
     font-size: 3ch;
     font-family: "Bungee", sans-serif;
     font-style: normal;
 }
 
-.login {
+.login { /*Här har jag också ändrat fonten men för annan text*/
     font-size: 2ch;
     font-family: "Bungee", sans-serif;
     font-style: normal;
@@ -45,7 +41,7 @@ body {
     color: rgb(240, 203, 203);
 }
 
-.vhd-text {
+.vhd-text { /*Här har jag ändrat fonten, storleken och färgen på VHDes.se texten*/
     color:  rgb(240, 203, 203);
     font-size: 3ch;
     font-family: "Bungee", sans-serif;
@@ -54,13 +50,13 @@ body {
     rgb(58, 30, 30);
 }
 
-#username {
+#username { /*Username fältet (boxen) har jag fixat med här*/
     background-color: rgb(110, 91, 91);
     padding: 8px;
     margin: 8px;
 }
 
-#password {
+#password { /*Password fältet (boxen) har jag fixat med här*/
     background-color: rgb(110, 91, 91);
     padding: 8px;
     margin: 8px;
