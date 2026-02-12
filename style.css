@@ -41,6 +41,10 @@ body { /* här har jag ändrat bakgrundsfärgen och hur allt är centrerat*/
     color: rgb(240, 203, 203);
 }
 
+.login:hover { /*När man hovrar över så blir det ljusare så att det blir tydligare att det är en klickbar knapp*/
+  filter: brightness(150%);
+}
+
 .vhd-text { /*Här har jag ändrat fonten, storleken och färgen på VHDes.se texten*/
     color:  rgb(240, 203, 203);
     font-size: 3ch;

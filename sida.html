@@ -3,40 +3,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style_sida.css">
-    <title>Min Profil - VHDes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet"> <!--importerad font från Google Fonts-->
+    <title>VHDes.se</title>
 </head>
 <body>
+    
     <div id="overlay">
-        <p>Vill du hyra en elscooter som den här? Klickar här för att börja</p>
+        <p class="sidaText">Vill du hyra en elscooter som den här? Klickar här för att börja!</p>
+        <p class="scooterBild"><img src="images/pngtree-electric-scooter-simple-png-image_12509899.png"></p>
     </div>
 
     <div id="content">
-    <h2 id="welcome"></h2>
-    
+        <h2 id="welcome"></h2>
+        <div class="sida-border">
     <div id="scooterStatus">
         <p id="statusMeddelande">Du hyr ingen elscooter just nu </p>
         <button id="hyrKnapp">Hyr en elscooter </button>
     </div>
 
     <div id="historik">
-        <h3>Senaste uthyrning: </h3>
+        <h3 class="sidaText">Senaste uthyrning: </h3>
+        
         <p id="infoText"></p>
     </div>
     </div>
-
+</div>
 <script>
-
-    document.addEventListener('click', () => {
-            document.getElementById('content').style.filter = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }, { once: true });
-
-    const params = new URLSearchParams(window.location.search);
+     const params = new URLSearchParams(window.location.search);
         const text = document.getElementById("welcome");
         let username = params.get('username');
         if(username){
             text.textContent = `Välkommen ${username}!`;
         }
+
+    document.addEventListener('click', () => {
+            document.getElementById('content').style.filter = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }, { once: true });
 
     const knapp = document.getElementById("hyrKnapp");
     const status = document.getElementById("scooterStatus");
