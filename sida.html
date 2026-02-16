@@ -9,28 +9,26 @@
     <title>VHDes.se</title>
 </head>
 <body>
-    
-    <div id="overlay">
-        <p class="sidaText">Vill du hyra en elscooter som den här? Klickar här för att börja!</p>
-        <p class="scooterBild"><img src="images/pngtree-electric-scooter-simple-png-image_12509899.png"></p>
-    </div>
 
-    <div id="content">
-        <h2 id="welcome"></h2>
+    <div id="content"> <!-- Det här är det som täcks av det suddiga lagret -->
+        <h2 id="welcome"></h2> <!-- Det här är för välkomstmeddelandet som säger hej och sedan användarnamnet -->
         <div class="sida-border">
-    <div id="scooterStatus">
+            <p id="ult-scooter">The Ultimate Scooter</p>
+    <div id="scooterStatus"> <!-- Det här är för statusen som säger om man hyr en elscooter eller inte -->
         <p id="statusMeddelande">Du hyr ingen elscooter just nu </p>
-        <button id="hyrKnapp">Hyr en elscooter </button>
+        <p id="timerDisplay">Tid: 0s</p> <!-- Det här är för timern som visar hur länge man har hyrt en elscooter -->
+        <button id="hyrKnapp" >Hyr en elscooter </button>
     </div>
 
-    <div id="historik">
+    <div id="historik"> <!-- Det här är för historiken som visar när man hyrde en elscooter och hur mycket det kostade -->
         <h3 class="sidaText">Senaste uthyrning: </h3>
-        
-        <p id="infoText"></p>
+
+        <p id="infoText"></p>  <!-- Detta är informationen som visas om hyrningen etc -->
     </div>
     </div>
 </div>
 <script>
+    //det här är koden för välkomstmeddelandet
      const params = new URLSearchParams(window.location.search);
         const text = document.getElementById("welcome");
         let username = params.get('username');
@@ -38,40 +36,75 @@
             text.textContent = `Välkommen ${username}!`;
         }
 
-    document.addEventListener('click', () => {
-            document.getElementById('content').style.filter = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }, { once: true });
-
+    //alla variabler / referenser som används i koden nedan. Med tydliga namn som visar vad de används till
     const knapp = document.getElementById("hyrKnapp");
     const status = document.getElementById("scooterStatus");
     const statusText = document.getElementById("statusMeddelande");
     const historik = document.getElementById("historik");
     const infoText = document.getElementById("infoText");
+    const timerDisplay = document.getElementById("timerDisplay");
 
+    //varibabler som kan ändra värde, altså ärUthyrd som visar om den är hyrd eller inte med hjälp av knappen, och pengar som visar saldot och timerInterval som används för att uppdatera timerDisplay varje sekund
     let ärUthyrd = false;
     let start;
+    let pengar = 10000000;
+    let timerInterval;
 
+    //här är koden för att skapa och visa texten som visar hur mycket pengar man har
+    const pengarDisplay = document.createElement("p");
+    pengarDisplay.id = "pengarText";
+    pengarDisplay.className = "sidaText";
+    pengarDisplay.textContent = "Saldo: " + pengar + " kr";
+    status.prepend(pengarDisplay);
+
+    // här är koden för att hantera klick på hyrknappen. När den klickas (om är ärUthyrd är false) ändras statusen på hemsidan
     knapp.addEventListener("click", function() {
         if (ärUthyrd == false) {
+            if (pengar < 50) { //om saldot är mindre än 50 kommer en alert som säger att du inte har råd
+                alert("Du har inte råd att hyra!");
+                return;
+            }
             ärUthyrd = true;
-            start = new Date();
+            start = new Date(); //start är lika med den tidpunkt
            
-            statusText.textContent = "Du hyr en elscooter nu.";
-            knapp.textContent = "Lämna tillbaka";
-           
-            historik.style.display = "none";
-        }
-        else {
-            ärUthyrd = false;
-            let slut = new Date();
-            let sekunder = Math.round((slut - start) / 1000);
+            statusText.textContent = "Du hyr en elscooter nu."; //statusText ändras till att säga att man hyr en elscooter
+            knapp.textContent = "Lämna tillbaka"; //man får alternativet att lämna tillbaka den, alltså knappen byter text knapp.textContent
 
+            document.body.style.backgroundColor = "rgb(80, 126, 100)"; //ändrar backgrundsfärgen till grön, som visar att den hyrs. En ändring av css
+            document.getElementById("timerDisplay").style.color = "rgb(150, 20, 20)"; //ändrar färgen på timern som räknar till röd, som visar att den hyrs
+           
+            historik.style.display = "none"; //gömmer historiken eftersom det inte finns någon information att uppdatera den med eftersom den hyrs just nu
+
+            //är en timer. timerInterval kör en funktion varje sekund som uppdaterar timerDisplay med hur många sekunder som har gått sedan start, alltså sedan man hyrt elScootern
+            timerDisplay.style.display = "block";
+            timerInterval = setInterval(() => {
+            let nu = new Date();
+            let sekunder = Math.round((nu - start) / 1000);
+            timerDisplay.textContent = `Tid: ${sekunder}s`;
+        }, 1000);
+
+        }
+        else { //här är för else, ifall knappen klickas igen
+            ärUthyrd = false;
+            let slut = new Date(); //sätter ett stop på tiden, så att det kan räknas och visa den exakta tiden elScootern var hyrd
+            let sekunder = Math.round((slut - start) / 1000); //omvandlar till rimliga sekunder
+            let kostnad = sekunder * 2; //kostnaden beräknas till 2 kr per sekund, med per sekund * 2. 2an ändrar på priset, då nu är det 2kr per sekund (dyrt)
+            pengar = pengar - kostnad; //uppdaterar saldot
+
+            //här under visas mycket text, alltså outputs i hemsidan efter hyrningen är avklarad
+            pengarDisplay.textContent = "Saldo: " + pengar + " kr";
             statusText.textContent = "Du hyr ingen elscooter just nu.";
             knapp.textContent = "Hyr en elscooter";
-           
-            historik.style.display = "block";
-            infoText.textContent = "Du hyrde scootern kl " + start.toLocaleTimeString() + " i " + sekunder + " sekunder.";
+
+            document.body.style.backgroundColor = "rgb(126, 80, 80)"; //ändrar tillbaka färgen till den ursprungliga
+
+            historik.style.display = "block"; //visar historik sektionen
+
+            infoText.textContent = "Du hyrde scootern kl " + start.toLocaleTimeString() + " och det kostade " + kostnad + " kr för " + sekunder + " sekunder."; //visar tid, och hur mycket det kostade att hyra den
+
+            clearInterval(timerInterval); //stoppar timern efter man lämnat tillbaka sin scooter, så att den inte fortsätter räkna och uppdatera timerDisplay
+            timerDisplay.style.display = "none";
+            timerDisplay.textContent = "Tid: 0s";
         }
     });
 
